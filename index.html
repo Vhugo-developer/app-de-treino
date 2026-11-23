@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Desafio 30 Dias — Victor & Samira</title>
+  <link rel="stylesheet" href="./css/style.css" />
+</head>
+<body>
+  <div class="app-layout">
+    <!-- BARRA LATERAL ESQUERDA -->
+    <aside class="sidebar">
+      <div class="profiles-column">
+        <!-- Perfil Victor -->
+        <div class="profile-avatar-wrapper">
+          <button type="button" class="avatar-btn active" data-profile="victor" title="Perfil Victor">
+            <img id="avatar-img-victor" src="" alt="Victor" class="avatar-img hidden" />
+            <span id="avatar-fallback-victor" class="avatar-fallback">V</span>
+          </button>
+          <label class="upload-photo-badge" title="Alterar foto de Victor">
+            📷
+            <input type="file" accept="image/*" class="avatar-file-input" data-profile="victor" />
+          </label>
+          <span class="avatar-name">Victor</span>
+        </div>
+
+        <!-- Perfil Samira -->
+        <div class="profile-avatar-wrapper">
+          <button type="button" class="avatar-btn" data-profile="samira" title="Perfil Samira">
+            <img id="avatar-img-samira" src="" alt="Samira" class="avatar-img hidden" />
+            <span id="avatar-fallback-samira" class="avatar-fallback">S</span>
+          </button>
+          <label class="upload-photo-badge" title="Alterar foto de Samira">
+            📷
+            <input type="file" accept="image/*" class="avatar-file-input" data-profile="samira" />
+          </label>
+          <span class="avatar-name">Samira</span>
+        </div>
+      </div>
+
+      <hr class="sidebar-divider" />
+
+      <nav class="nav-column" role="tablist">
+        <button type="button" class="nav-col-btn active" data-tab="workout-panel">
+          <span class="nav-icon">🏋️</span>
+          <span class="nav-label">Treino</span>
+        </button>
+        <button type="button" class="nav-col-btn" data-tab="diet-panel">
+          <span class="nav-icon">🥗</span>
+          <span class="nav-label">Alimentação</span>
+        </button>
+        <button type="button" class="nav-col-btn" data-tab="edit-food-panel">
+          <span class="nav-icon">✏️</span>
+          <span class="nav-label">Editar Alimentos</span>
+        </button>
+      </nav>
+    </aside>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="main-content">
+      <!-- Cabeçalho e Seletor de Dia -->
+      <header class="top-bar card">
+        <div class="top-bar-info">
+          <h1 id="header-title">Desafio 30 Dias — Victor</h1>
+          <p id="header-subtitle" class="subtitle">Foco: Definição Muscular & Abdômen | Joelho Esquerdo Seguro</p>
+        </div>
+
+        <div class="day-controls">
+          <button type="button" id="prev-day-btn" class="icon-btn" title="Dia anterior">◀</button>
+          <div class="day-badge-box">
+            <strong id="current-day-label">Dia 1 / 30 (Segunda)</strong>
+            <span id="current-day-focus" class="focus-pill">Peito & Core Intenso</span>
+          </div>
+          <button type="button" id="next-day-btn" class="icon-btn" title="Próximo dia">▶</button>
+
+          <label class="day-done-toggle">
+            <input type="checkbox" id="day-completed-checkbox" />
+            <span>Dia Concluído</span>
+          </label>
+        </div>
+      </header>
+
+      <!-- Barra de Progresso + Resumo Metabólico (TMB + Gasto do Treino) -->
+      <div class="progress-card card">
+        <div class="progress-text-row">
+          <span>Progresso dos 30 Dias <span id="difficulty-status-pill" class="diff-pill">Nível: Padrão (1.0x)</span></span>
+          <strong id="progress-text">0 / 30 dias (0%)</strong>
+        </div>
+        <div class="progress-track">
+          <div id="progress-fill" class="progress-fill" style="width: 0%;"></div>
+        </div>
+        <div class="metabolic-strip">
+          <span>TMB Basal: <strong id="bmr-display">1.945 kcal</strong></span>
+          <span>•</span>
+          <span>Gasto Diário Base: <strong id="tdee-display">2.650 kcal</strong></span>
+          <span>•</span>
+          <span>Queima Extra Treino/HIIT: <strong id="workout-burn-display" class="accent-text">0 kcal</strong></span>
+          <span>•</span>
+          <span>Saldo Líquido Hoje: <strong id="net-kcal-display">0 kcal</strong></span>
+        </div>
+      </div>
+
+      <!-- =====================================================
+           ABA 1: TREINO (TREINO COMUM vs CARDIO HIIT + PLAYER 3D)
+           ===================================================== -->
+      <section id="workout-panel" class="tab-panel active">
+        <!-- Seletor Alternável: Treino Comum vs Cardio HIIT -->
+        <div class="mode-switch-bar card">
+          <div class="mode-switch-info">
+            <h3>Modalidade do Dia</h3>
+            <p class="subtitle">Alterne para registrar um Cardio HIIT (YouTube) e abater as calorias do dia.</p>
+          </div>
+          <div class="mode-toggle-group">
+            <button type="button" id="mode-regular-btn" class="mode-btn active">💪 Treino Comum</button>
+            <button type="button" id="mode-hiit-btn" class="mode-btn">🔥 Cardio HIIT</button>
+          </div>
+        </div>
+
+        <!-- Painel Editável de Cardio HIIT (Exibido quando Cardio HIIT está ativo) -->
+        <div id="hiit-custom-panel" class="card hiit-panel hidden">
+          <div class="hiit-panel-header">
+            <div>
+              <h3>Registro de Cardio HIIT (YouTube / Livre)</h3>
+              <p class="subtitle">Preencha os dados do treino feito hoje. As calorias serão abatidas automaticamente do saldo diário.</p>
+            </div>
+            <button type="button" id="restore-regular-btn" class="btn ghost small">Voltar ao Treino Comum</button>
+          </div>
+
+          <form id="hiit-form" class="food-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="hiit-name-input">Nome do Treino / Vídeo</label>
+                <input type="text" id="hiit-name-input" placeholder="Ex: HIIT Queima Gordura 35 min - YouTube" required />
+              </div>
+              <div class="form-group">
+                <label for="hiit-duration-input">Tempo Realizado (minutos)</label>
+                <input type="number" id="hiit-duration-input" min="5" max="180" placeholder="Ex: 40" required />
+              </div>
+              <div class="form-group">
+                <label for="hiit-kcal-input">Calorias Gastas (kcal)</label>
+                <input type="number" id="hiit-kcal-input" min="10" max="2000" placeholder="Ex: 380" required />
+              </div>
+            </div>
+            <div class="form-row">
+              <button type="submit" class="btn primary">Salvar Cardio HIIT do Dia</button>
+            </div>
+          </form>
+
+          <div id="hiit-saved-summary" class="hiit-saved-box hidden"></div>
+        </div>
+
+        <!-- Conteúdo do Treino Comum -->
+        <div id="regular-workout-wrapper">
+          <!-- Player Ativo com Boneco 3D e Cronômetro Automático -->
+          <div id="active-workout-player" class="player-card card hidden">
+            <div class="player-header">
+              <span id="player-phase-badge" class="phase-badge exec">EM EXECUÇÃO</span>
+              <button type="button" id="close-player-btn" class="btn ghost small">Encerrar ✕</button>
+            </div>
+
+            <div class="player-body">
+              <div class="player-canvas-wrap">
+                <canvas id="player-3d-canvas" width="260" height="260"></canvas>
+              </div>
+
+              <div class="player-details">
+                <h2 id="player-exercise-title">Nome do Exercício</h2>
+                <p id="player-exercise-meta" class="player-meta">Série 1 de 3 | 40s execução</p>
+                <p id="player-exercise-desc" class="player-desc">Instruções...</p>
+
+                <div class="player-timer-box">
+                  <div id="player-timer-display" class="player-timer">00:40</div>
+                  <span id="player-timer-hint" class="timer-hint">
+                    Ao zerar, o descanso padronizado inicia automaticamente!
+                  </span>
+                </div>
+
+                <div class="player-actions">
+                  <button type="button" id="player-pause-resume-btn" class="btn secondary">Pausar</button>
+                  <button type="button" id="player-skip-phase-btn" class="btn primary">Concluir Série / Pular ⏭</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Lista de 5 Exercícios Variados (3 séries cada) -->
+          <div id="workout-list" class="workout-grid"></div>
+        </div>
+
+        <!-- Feedback Pós-Treino (Adapta automaticamente o próximo dia) -->
+        <div id="feedback-card" class="card feedback-box">
+          <div>
+            <h3>Como foi o treino de hoje?</h3>
+            <p class="subtitle">Sua resposta ajusta automaticamente o tempo e as repetições do próximo dia.</p>
+          </div>
+          <div class="feedback-buttons">
+            <button type="button" class="fb-btn easy" data-feedback="easy">😎 Fácil (Aumentar amanhã)</button>
+            <button type="button" class="fb-btn medium" data-feedback="medium">💪 Ideal (Manter ritmo)</button>
+            <button type="button" class="fb-btn hard" data-feedback="hard">🥵 Difícil (Reduzir amanhã)</button>
+          </div>
+          <p id="feedback-status-msg" class="feedback-msg"></p>
+        </div>
+      </section>
+
+      <!-- =====================================================
+           ABA 2: ALIMENTAÇÃO (SUGESTÕES + CÁLCULO COM METABOLISMO)
+           ===================================================== -->
+      <section id="diet-panel" class="tab-panel">
+        <div class="nutrition-dashboard card">
+          <div class="nutri-stat">
+            <span class="nutri-label">Ingerido Hoje</span>
+            <div class="nutri-values">
+              <strong id="consumed-kcal">0</strong>
+              <span>kcal</span>
+            </div>
+          </div>
+          <div class="nutri-stat">
+            <span class="nutri-label">Meta Ajustada (c/ Treino)</span>
+            <div class="nutri-values">
+              <strong id="goal-kcal">2250</strong>
+              <span>kcal</span>
+            </div>
+          </div>
+          <div class="nutri-stat">
+            <span class="nutri-label">Proteínas</span>
+            <div class="nutri-values">
+              <strong id="consumed-protein">0</strong>
+              <span>/ <span id="goal-protein">170</span> g</span>
+            </div>
+          </div>
+          <div class="nutri-stat">
+            <span class="nutri-label">Água</span>
+            <div class="nutri-values">
+              <strong id="goal-water">3,1 L</strong>
+            </div>
+          </div>
+        </div>
+
+        <p class="section-helper">
+          Monte suas refeições livremente marcando os itens consumidos e a quantidade de porções. O saldo desconta seu metabolismo basal e o gasto do treino:
+        </p>
+
+        <div id="diet-suggestions-container" class="diet-groups"></div>
+      </section>
+
+      <!-- =====================================================
+           ABA 3: EDIÇÃO EXCLUSIVA DOS ALIMENTOS + BACKUP
+           ===================================================== -->
+      <section id="edit-food-panel" class="tab-panel">
+        <div class="card">
+          <h2>Adicionar Novo Alimento às Sugestões</h2>
+          <p class="section-helper">
+            Perfil ativo: <strong id="edit-profile-name">Victor</strong>
+          </p>
+
+          <form id="add-food-form" class="food-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="food-meal-select">Refeição</label>
+                <select id="food-meal-select" required>
+                  <option value="cafe">Café da Manhã</option>
+                  <option value="lanche">Lanche</option>
+                  <option value="almoco">Almoço</option>
+                  <option value="jantar">Jantar</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="food-name-input">Alimento e Porção</label>
+                <input type="text" id="food-name-input" placeholder="Ex: Ovo cozido (1 unid.) ou Frango (100g)" required />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="food-kcal-input">Calorias (kcal)</label>
+                <input type="number" id="food-kcal-input" min="1" required />
+              </div>
+              <div class="form-group">
+                <label for="food-prot-input">Proteínas (g)</label>
+                <input type="number" id="food-prot-input" min="0" step="0.5" required />
+              </div>
+              <div class="form-group form-submit-box">
+                <button type="submit" class="btn primary full-width">+ Adicionar</button>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <div class="card">
+          <h3>Alimentos Cadastrados</h3>
+          <div id="manage-foods-list" class="manage-foods-list"></div>
+        </div>
+
+        <div class="card">
+          <h3>Backup / Transferir entre Celulares</h3>
+          <div class="form-row">
+            <button type="button" id="export-backup-btn" class="btn secondary">⬇ Exportar Dados (.json)</button>
+            <label class="btn primary" style="text-align: center; cursor: pointer;">
+              ⬆ Importar Dados (.json)
+              <input type="file" id="import-backup-input" accept=".json" style="display: none;" />
+            </label>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
