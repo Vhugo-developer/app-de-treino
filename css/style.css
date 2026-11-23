@@ -45,9 +45,22 @@ body {
   line-height: 1.5;
 
   /* 👇 COLOQUE SUA FOTO DE FUNDO AQUI */
-  background-image:
+  .bg-fixed-layer {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center top;
+    background-image:
     linear-gradient(var(--bg-overlay), var(--bg-overlay)),
     url('../img/foto_fundo_app.webp');
+    background-repeat: no-repeat;
+    pointer-events: none;
+    z-index: -1;
+  }
+
+
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -917,5 +930,21 @@ body {
   .form-group input,
   .form-group select {
     font-size: 16px;
+  }
+  
+  @media (max-width: 720px) {
+    html,
+    body {
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+  
+    .app-layout,
+    .main-content,
+    .card {
+      max-width: 100%;
+      min-width: 0;
+      box-sizing: border-box;
+    }
   }
 }
