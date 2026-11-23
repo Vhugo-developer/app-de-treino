@@ -240,55 +240,56 @@ const DEFAULT_DATA = {
     water: "3,1 L",
     defaultRestSeconds: 45,
     // 5 tipos de treino distintos (Segunda a Sexta) - 3 séries cada, zero objetos caseiros
+    // Substitua o weeklyWorkouts do Victor no script.js por este bloco:
     weeklyWorkouts: [
       {
-        focus: "Segunda: Peito & Barriga Supra",
+        focus: "Segunda: Peito, Tríceps & Foco Supra (Abdômen)",
         exercises: [
-          { title: "Flexão Declinada (Pés no Sofá)", sets: 3, baseReps: 12, execSeconds: 40, anim: "pushup", desc: "Pés elevados no sofá/cadeira, desça o peito controlando em 3s." },
-          { title: "Mergulho Profundo na Cadeira", sets: 3, baseReps: 12, execSeconds: 40, anim: "dip", desc: "Tronco inclinado à frente, cotovelos a 90° e subida explosiva." },
-          { title: "Flexão Diamante (Miolo do Peito)", sets: 3, baseReps: 10, execSeconds: 35, anim: "pushup", desc: "Mãos próximas formando um triângulo sob o esterno." },
-          { title: "Abdominal Supra Curto com Pausa", sets: 3, baseReps: 20, execSeconds: 40, anim: "crunch", desc: "Tire apenas as escápulas do chão e segure 2s no topo contraindo o abdômen." },
-          { title: "Prancha com Toque no Ombro", sets: 3, baseReps: 16, execSeconds: 40, anim: "plank", desc: "Quadril travado sem balançar enquanto toca o ombro oposto." }
+          { title: "Flexão Declinada (Pés no Sofá)", sets: 3, baseReps: 12, execSeconds: 40, anim: "pushup", desc: "Pés elevados na cadeira, foco na parte superior do peito." },
+          { title: "Mergulho Profundo na Cadeira", sets: 3, baseReps: 12, execSeconds: 40, anim: "dip", desc: "Tronco inclinado, cotovelos a 90 graus para empuxo e tríceps." },
+          { title: "Abdominal Supra Curto com Pausa", sets: 4, baseReps: 20, execSeconds: 40, anim: "crunch", desc: "Tire apenas as escápulas do chão e segure 2 segundos no topo." },
+          { title: "Abdominal Bicicleta", sets: 4, baseReps: 20, execSeconds: 45, anim: "crunch", desc: "Gire o cotovelo em direção ao joelho oposto em cadência controlada." },
+          { title: "Prancha Dinâmica (Sobe e Desce)", sets: 3, baseReps: 12, execSeconds: 40, anim: "plank", desc: "Alterne apoio de antebraços e mãos mantendo o core travado." }
         ]
       },
       {
-        focus: "Terça: Ombros 3D & Barriga Infra",
+        focus: "Terça: Ombros 3D & Foco Infra (Elevação de Pernas)",
         exercises: [
-          { title: "Flexão Pike (Ombro Anterior/Médio)", sets: 3, baseReps: 10, execSeconds: 40, anim: "pushup", desc: "Quadril bem alto em V invertido, desça a cabeça à frente das mãos." },
-          { title: "Elevação Lateral Isométrica + Pulso", sets: 3, baseReps: 25, execSeconds: 40, anim: "shoulder", desc: "Braços abertos na altura dos ombros, faça pulsos curtos contínuos sem baixar." },
-          { title: "Anjo Invertido no Solo (Posterior)", sets: 3, baseReps: 15, execSeconds: 40, anim: "shoulder", desc: "De bruços, desenhe um arco amplo com os braços estendidos." },
-          { title: "Elevação de Pernas no Solo (Infra)", sets: 3, baseReps: 15, execSeconds: 40, anim: "legraise", desc: "Mãos sob o quadril, desça as pernas estendidas devagar sem tocar o chão." },
-          { title: "Abdominal Canivete Alternado", sets: 3, baseReps: 16, execSeconds: 40, anim: "crunch", desc: "Suba o tronco tocando a mão direita no pé esquerdo e alterne." }
+          { title: "Flexão Pike (Ombro Anterior)", sets: 3, baseReps: 10, execSeconds: 40, anim: "pushup", desc: "Quadril em V invertido para construção de ombros largos." },
+          { title: "Elevação Lateral Isométrica + Pulsos", sets: 3, baseReps: 25, execSeconds: 40, anim: "shoulder", desc: "Braços abertos, faça pulsos curtos sem baixar para fadigar deltoide." },
+          { title: "Elevação de Pernas no Solo (Infra)", sets: 4, baseReps: 15, execSeconds: 45, anim: "legraise", desc: "Mãos sob o quadril, desça as pernas estendidas devagar sem tocar o chão." },
+          { title: "Elevação de Pernas Alternada (Tesoura)", sets: 4, baseReps: 20, execSeconds: 45, anim: "legraise", desc: "Mantenha a lombar colada no chão alternando pernas baixas." },
+          { title: "Prancha Abdominal Clássica", sets: 3, baseReps: 1, execSeconds: 45, anim: "plank", desc: "Sustentação isométrica focando em contrair glúteos e abdômen." }
         ]
       },
       {
-        focus: "Quarta: Inferiores (Joelho Seguro) & Core",
+        focus: "Quarta: Inferiores Seguros & Linha Cintura (Oblíquos)",
         exercises: [
-          { title: "Elevação Pélvica Unilateral", sets: 3, baseReps: 12, execSeconds: 40, anim: "bridge", desc: "Pé de apoio mais à frente (ângulo > 90° para zero pressão na patela esquerda)." },
-          { title: "Bom Dia (Posterior e Lombar)", sets: 3, baseReps: 15, execSeconds: 40, anim: "sumo", desc: "Joelhos quase estendidos, empurre o quadril para trás mantendo coluna reta." },
-          { title: "Abdução Lateral de Quadril", sets: 3, baseReps: 20, execSeconds: 35, anim: "bridge", desc: "Fortalece o glúteo médio para estabilizar o alinhamento da patela." },
-          { title: "Prancha Urso (Joelho Flutuando)", sets: 3, baseReps: 40, execSeconds: 40, anim: "plank", desc: "Joelhos a 3 cm do solo sem impacto articular; foco total no abdômen profundo." },
-          { title: "Abdominal Bicicleta Lento", sets: 3, baseReps: 20, execSeconds: 40, anim: "crunch", desc: "Gire o cotovelo em direção ao joelho oposto em cadência controlada." }
+          { title: "Elevação Pélvica Unilateral (Pé à Frente)", sets: 3, baseReps: 12, execSeconds: 40, anim: "bridge", desc: "Pé afastado > 90 graus para zero pressão na patela esquerda." },
+          { title: "Bom Dia (Dobradiça de Quadril)", sets: 3, baseReps: 15, execSeconds: 40, anim: "sumo", desc: "Posterior e lombar fortes sem exigir flexão do joelho." },
+          { title: "Abdominal Canivete Alternado", sets: 4, baseReps: 16, execSeconds: 40, anim: "crunch", desc: "Suba o tronco cruzando a mão em direção ao pé oposto." },
+          { title: "Prancha Lateral com Alcance", sets: 3, baseReps: 10, execSeconds: 35, anim: "plank", desc: "Trabalha diretamente a parede lateral do abdômen." },
+          { title: "Abdominal Infra Escalador", sets: 3, baseReps: 24, execSeconds: 40, anim: "mountain", desc: "Puxe os joelhos em direção ao peito em ritmo constante." }
         ]
       },
       {
-        focus: "Quinta: Peito, Tríceps & Oblíquos",
+        focus: "Quinta: Peito, Ombros & Combo Abdominal",
         exercises: [
-          { title: "Flexão Arqueiro (Foco Unilateral)", sets: 3, baseReps: 10, execSeconds: 40, anim: "pushup", desc: "Um braço estendido na lateral enquanto o outro sustenta o peso." },
-          { title: "Mergulho na Cadeira com Pausa", sets: 3, baseReps: 12, execSeconds: 40, anim: "dip", desc: "Segure 2 segundos no ponto mais baixo antes de empurrar." },
-          { title: "Flexão Explosiva (Com Impulso)", sets: 3, baseReps: 10, execSeconds: 35, anim: "pushup", desc: "Desça controlado e empurre rápido tirando levemente as mãos do solo." },
-          { title: "Abdominal Oblíquo Cruzado", sets: 3, baseReps: 18, execSeconds: 40, anim: "crunch", desc: "Tornozelo apoiado no joelho oposto, leve o ombro em direção ao joelho." },
-          { title: "Escalador Cruzado (Mountain Climber)", sets: 3, baseReps: 24, execSeconds: 40, anim: "mountain", desc: "Puxe o joelho em direção ao cotovelo oposto trabalhando a linha lateral da barriga." }
+          { title: "Flexão Arqueiro (Foco Unilateral)", sets: 3, baseReps: 10, execSeconds: 40, anim: "pushup", desc: "Distribua o peso focando mais força em um braço de cada vez." },
+          { title: "Anjo Invertido no Solo (Posterior Ombro)", sets: 3, baseReps: 15, execSeconds: 40, anim: "shoulder", desc: "Postura e deltoide posterior para alinhar a parte superior." },
+          { title: "Abdominal Supra Completo", sets: 4, baseReps: 18, execSeconds: 40, anim: "crunch", desc: "Suba o tronco totalmente enrolando a coluna vértebra por vértebra." },
+          { title: "Elevação de Quadril Invertida", sets: 3, baseReps: 12, execSeconds: 40, anim: "legraise", desc: "Deitado, impulsione o quadril para cima tirando o bumbum do chão." },
+          { title: "Prancha Urso (Bear Hold)", sets: 3, baseReps: 1, execSeconds: 40, anim: "plank", desc: "Joelhos flutuando a 3 cm do chão sem impacto na patela." }
         ]
       },
       {
-        focus: "Sexta: Ombros, Core Completo & Queima",
+        focus: "Sexta: Ombros, Core Total & Queima Metabólica",
         exercises: [
-          { title: "Prancha Dinâmica (Sobe e Desce)", sets: 3, baseReps: 12, execSeconds: 40, anim: "plank", desc: "Alterne apoio de antebraços e mãos mantendo ombros e core travados." },
-          { title: "Círculos de Braço em Tensão", sets: 3, baseReps: 30, execSeconds: 40, anim: "shoulder", desc: "Braços abertos em T, gire rápido para frente e para trás até queimar deltoides." },
-          { title: "Abdominal Infra Tesoura", sets: 3, baseReps: 20, execSeconds: 40, anim: "legraise", desc: "Alterne as pernas estendidas a poucos centímetros do chão." },
-          { title: "Vácuo Abdominal + Prancha", sets: 3, baseReps: 35, execSeconds: 35, anim: "plank", desc: "Puxe o umbigo contra as costas durante toda a sustentação." },
-          { title: "Shadow Boxing Intenso (Sem Impacto)", sets: 3, baseReps: 45, execSeconds: 45, anim: "hiit", desc: "Socos rápidos contínuos em pé para queimar calorias sem sobrecarregar o joelho." }
+          { title: "Flexão Diamante", sets: 3, baseReps: 10, execSeconds: 35, anim: "pushup", desc: "Foco intenso no tríceps e miolo do peitoral." },
+          { title: "Círculos de Braço em Tensão", sets: 3, baseReps: 30, execSeconds: 40, anim: "shoulder", desc: "Resistência pura para deltoides sem precisar de carga." },
+          { title: "Circuito Abdômen Blindado (Supra + Infra)", sets: 3, baseReps: 15, execSeconds: 45, anim: "crunch", desc: "Combine 15 curtos com 15 elevações de perna sem descanso." },
+          { title: "Vácuo Abdominal + Prancha", sets: 3, baseReps: 1, execSeconds: 45, anim: "plank", desc: "Puxe o umbigo para dentro durante toda a sustentação." },
+          { title: "Shadow Boxing Intenso", sets: 3, baseReps: 1, execSeconds: 45, anim: "hiit", desc: "Socos rápidos no ar para fechar a semana drenando glicogênio." }
         ]
       }
     ],
